@@ -1,6 +1,7 @@
 # vim ~tmp files
 *.swp
 *.un~
+*.map
 
 # ignore bourbon install so that it is the latest build
 # for developers that need it

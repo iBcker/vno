@@ -1,3 +1,7 @@
+var is_small=function(){
+  return $('.panel-cover').width()<960;
+}
+
 $(document).ready(function() {
 
   $('body').removeClass('no-js');
@@ -11,11 +15,18 @@ $(document).ready(function() {
     if (currentWidth < 960) {
       $('.panel-cover').addClass('panel-cover--collapsed');
       $('.content-wrapper').addClass('animated slideInRight');
+      $('.border_item').addClass('hidden');
     } else {
       $('.panel-cover').css('max-width',currentWidth);
       $('.panel-cover').animate({'max-width': '700px', 'width': '30%'}, 400, swing = 'swing', function() {} );
     }
   });
+
+  if (window.location.pathname != '/' || location.hash == "#blog") {
+    $('.border_item').addClass('hidden');
+  } else {
+    $('.border_item').removeClass('hidden');
+  }
 
   if (window.location.hash && window.location.hash == "#blog") {
     $('.panel-cover').addClass('panel-cover--collapsed');
@@ -28,28 +39,20 @@ $(document).ready(function() {
 
   $('.btn-mobile-menu__icon').click(function() {
     if ($('.navigation-wrapper').css('display') == "block") {
-      $('.navigation-wrapper').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-        $('.navigation-wrapper').toggleClass('visible animated bounceOutUp');
-      });
       $('.navigation-wrapper').toggleClass('animated bounceInDown animated bounceOutUp');
-
     } else {
-      $('.navigation-wrapper').toggleClass('visible animated bounceInDown');
+      $('.navigation-wrapper').addClass('visible animated bounceInDown');
     }
     $('.btn-mobile-menu__icon').toggleClass('fa fa-list fa fa-angle-up animated fadeIn');
   });
 
   $('.navigation-wrapper .blog-button').click(function() {
-    if ($('.navigation-wrapper').css('display') == "block") {
-      $('.navigation-wrapper').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-        $('.navigation-wrapper').toggleClass('visible animated bounceOutUp');
-      });
-
+    if (is_small()) {
       $('.navigation-wrapper').toggleClass('animated bounceInDown animated bounceOutUp');
-    }
-    
-    $('.btn-mobile-menu__icon').toggleClass('fa fa-list fa fa-angle-up animated fadeIn');
+      $('.btn-mobile-menu__icon').toggleClass('fa fa-list fa fa-angle-up animated fadeIn');
+    };
   });
+
 });
 $(document.links).filter(function() {
     return this.hostname != window.location.hostname;

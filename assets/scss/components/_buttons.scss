@@ -75,12 +75,13 @@
   height: 35px;
   background: rgba($gray-darkest,.98);
   border-bottom: 1px solid rgba(255,255,255,.1);
-  text-align: center;
+  text-align: left;
 }
 
 .btn-mobile-menu__icon,
 .btn-mobile-close__icon {
   position: relative;
   top: 10px;
+  left: 10px;
   color: #FFF;
 }

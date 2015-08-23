@@ -168,6 +168,10 @@
   @include linear-gradient(140deg, rgba($slate,.6) 20%, rgba(darken($slate, 20%),.8));
 }
 
+.cover-darke {
+  @include linear-gradient(140deg, rgba(#3D4349,.4) 40%, rgba(#2e3237,1));
+}
+
 .cover-disabled {
   background: none;
 }
